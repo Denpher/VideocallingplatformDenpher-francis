@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NEXION — Video Calling Platform
+
+A real-time video calling platform built with **Next.js**, **WebRTC**, **LiveKit**, and **Socket.IO**.
+
+## Prerequisites
+
+- **Node.js** `v20.19.0` or higher (recommended: **v24+**)
+- **npm** `v10` or higher
+
+> **⚠️ Important:** If you're on Node `v22`, make sure you have at least **v22.13.0** or later. Older v22 releases may show engine compatibility warnings.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Denpher/VideocallingplatformDenpher-francis.git
+cd VideocallingplatformDenpher-francis
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file in the root directory with your configuration:
+
+```env
+# Add your environment variables here
+# Example:
+# LIVEKIT_API_KEY=your_api_key
+# LIVEKIT_API_SECRET=your_api_secret
+# NEXT_PUBLIC_LIVEKIT_URL=wss://your-livekit-server
+```
+
+### 4. Run the development server
+
+Start the **Next.js frontend**:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the **Socket.IO signalling server** (in a separate terminal):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run server
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. Open in browser
 
-## Learn More
+Navigate to [http://localhost:3000](http://localhost:3000) to use the app.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+nexion/
+├── src/
+│   └── app/
+│       ├── page.tsx            # Landing page
+│       ├── layout.tsx          # Root layout
+│       ├── globals.css         # Global styles
+│       └── room/
+│           └── [id]/
+│               └── page.tsx    # Video room page (WebRTC)
+├── server/
+│   └── index.js               # Socket.IO signalling server
+├── public/                     # Static assets
+├── package.json
+├── next.config.ts
+└── tsconfig.json
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+- **Frontend:** Next.js 16, React 19, TypeScript
+- **Video:** WebRTC, LiveKit
+- **Signalling:** Socket.IO, Express
+- **Styling:** CSS Modules
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start Next.js dev server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run server` | Start Socket.IO signalling server |
+| `npm run lint` | Run ESLint |
+
+## License
+
+This project is open source.
