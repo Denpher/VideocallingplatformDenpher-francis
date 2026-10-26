@@ -1,6 +1,9 @@
 
 /* NEXION — BLACK THEME */
-
+*{
+  margin:0;
+  padding:0;
+}
 .nx-page {
   --nx-bg: #080808;
   --nx-panel: #101010;
